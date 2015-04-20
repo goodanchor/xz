@@ -47,6 +47,21 @@ class Products_Model extends CI_Model
         return false;
     }
 
+       function getmyall()
+    {   
+        $userid = $this->session->userdata('userid');
+        $this->db->from('products');
+        $this->db->where('userid',$userid);
+        //$this->db->limit(10,$limit);
+        $this->db->order_by('time','desc');
+        $query = $this->db->get();
+        if($rows = $query->result_array())
+            return $rows;
+        return false;
+    }
+
+
+
     function getOne($proid)
     {
         $this->db->select('products.*,user.qq,user.phone,user.name');

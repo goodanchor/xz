@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2015-04-20 19:12:06
+-- 生成日期: 2015-04-20 20:26:17
 -- 服务器版本: 5.5.41-0ubuntu0.14.04.1
 -- PHP 版本: 5.5.9-1ubuntu4.7
 
@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `products` (
   `pic` varchar(500) NOT NULL COMMENT '商品图片',
   `description` varchar(200) NOT NULL COMMENT '描述',
   `time` int(11) NOT NULL COMMENT '上传时间',
+  `phone` varchar(11) NOT NULL COMMENT '手机',
+  `qq` varchar(10) NOT NULL COMMENT 'ｑｑ',
   PRIMARY KEY (`proid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
@@ -69,11 +71,11 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- 转存表中的数据 `products`
 --
 
-INSERT INTO `products` (`proid`, `proname`, `pid`, `wants`, `userid`, `pic`, `description`, `time`) VALUES
-(16, 'dhg', 2, '2', 0, '', '', 1429527447),
-(17, 'sq', 2, '2', 0, '', '', 1429525650),
-(18, 'sq', 2, '2', 0, '', '', 1429525651),
-(19, 'sq', 2, '2', 0, '', '', 1429525652);
+INSERT INTO `products` (`proid`, `proname`, `pid`, `wants`, `userid`, `pic`, `description`, `time`, `phone`, `qq`) VALUES
+(16, 'dhg', 2, '2', 0, '', '', 1429527447, '', ''),
+(17, 'sq', 2, '2', 0, '', '', 1429525650, '', ''),
+(18, 'sq', 2, '2', 0, '', '', 1429525651, '', ''),
+(19, 'sq', 2, '2', 0, '', '', 1429525652, '', '');
 
 -- --------------------------------------------------------
 

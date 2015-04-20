@@ -33,6 +33,16 @@
 			}
 			echo json_encode($res);
 		}
+
+		function show_my_info()
+		{
+			if($userid = $this->session->userdata('userid'))
+			{
+				$row = $this->user_model->show($userid);
+			}
+			echo json_encode($row);
+		}
+
 		//register
 		function do_register()
 		{

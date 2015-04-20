@@ -68,20 +68,20 @@
 			else 
 			{
 				$data['session'] = $session;
-				//$data['collection'] = $this->collection_model->get_my_col();
+				$data['collection'] = $this->collection_model->get_my_col();
 				$this->load->view('personal_collet',$data);
 			}		
 		}
 
-		function my_collect_detail()
-		{
+		function my_collect_detail($proid=1)
+		{	
 			$session = $this->session->all_userdata();
 			if(empty($session['userid']))
 				header("LOCATION:login");
 			else 
 			{
 				$data['session'] = $session;
-				//$data['collection'] = $this->collection_model->get_my_col();
+				$data['collection'] = $this->products_model->getOne($proid);
 				$this->load->view('personal-collect-detail',$data);
 			}		
 		}
@@ -94,7 +94,7 @@
 			else 
 			{
 				$data['session'] = $session;
-				//$data['collection'] = $this->collection_model->get_my_col();
+				$data['collection'] = $this->collection_model->get_my_col();
 				$this->load->view('personal-publish',$data);
 			}		
 		}
@@ -107,7 +107,7 @@
 			else 
 			{
 				$data['session'] = $session;
-				//$data['collection'] = $this->collection_model->get_my_col();
+				$data['collection'] = $this->collection_model->get_my_col();
 				$this->load->view('personal-publish-detail',$data);
 			}		
 		}
@@ -128,11 +128,11 @@
 		function show_detail($proid=1)
 		{
 			$proid = (int)$proid;
-			//$data = $this->products_model->getOne($proid);
-			//if($data)
-				$this->load->view('product');
-			//else 
-				//$this->load->view("404NOFOUND");
+			$data = $this->products_model->getOne($proid);
+			if($data)
+				$this->load->view('product',$data);
+			else 
+				$this->load->view("404NOFOUND");
 		}
 
 	}

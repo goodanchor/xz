@@ -54,6 +54,13 @@ class User_Model extends CI_Model
             return FALSE;
     }
 
+    function show($userid)
+    {
+        $this->db->select('name,email,pic');
+        $query = $this->db->get_where('user',array('userid'=>$userid));
+        return $row = $query->row_array();
+    }
+
     function register($post)
     {
         $post['password'] = md5($post['password']);

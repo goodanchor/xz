@@ -57,7 +57,7 @@
 
 		function update()
 		{
-			$post = array('proid'=>16,'proname'=>'dhg','pid'=>2,'wants'=>2);//$this->input->post();
+			$post = $this->input->post();
 
 			if($post['proid']=='' OR $post['proname']=='' OR $post['pid']=='' OR $post['wants']=='')
 			{
@@ -112,6 +112,24 @@
 			echo json_encode($res);
 		}
 
+		function getMyAll()
+		{
+			
+			if($rows = $this->products_model->getmyall()
+			{
+				$res['status'] = 1;
+				$res['msg'] = 'success';
+				$res['rows'] = $rows;
+			}
+			else
+			{
+				$res['status'] = 0;
+				$res['msg'] = 'failed';
+				$res['rows'] = '';
+			}
+			echo json_encode($res);
+		}
+
 		function getOne()
 		{
 			$proid= array('proid'=> 16);
@@ -130,6 +148,11 @@
 			echo json_encode($res);
 		}
 		
+		/*function add_cases()
+		{
+			
+		}*/
+
 	/*	function get_recommend()
 		{
 			$this->products_model->get
