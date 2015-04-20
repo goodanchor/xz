@@ -32,21 +32,30 @@
 		{
 			$session = $this->session->all_userdata();
 			if(!empty($session['userid']))
-				header("LOCATON:index");
+				header("LOCATION:index");
 			else 
 				$this->load->view('login');
+		}
+
+		function register()
+		{
+			$session = $this->session->all_userdata();
+			if(!empty($session['userid']))
+				header("LOCATION:index");
+			else 
+				$this->load->view('register');
 		}
 
 		function show_my_info()
 		{
 			$session = $this->session->all_userdata();
 			if(empty($session['userid']))
-				header("LOCATON:login");
+				header("LOCATION:login");
 			else 
 			{
 				$data['myinfo'] =$this->user_model->get_my_info();
 				$data['session'] = $session;
-				$this->load->view('myinfo',$data);
+				$this->load->view('personal');
 			}
 				
 		}
@@ -55,34 +64,75 @@
 		{
 			$session = $this->session->all_userdata();
 			if(empty($session['userid']))
-				header("LOCATON:login");
+				header("LOCATION:login");
 			else 
 			{
 				$data['session'] = $session;
-				$data['collection'] = $this->collection_model->get_my_col();
-				$this->load->view('mycollection',$data);
+				//$data['collection'] = $this->collection_model->get_my_col();
+				$this->load->view('personal_collet',$data);
 			}		
 		}
+
+		function my_collect_detail()
+		{
+			$session = $this->session->all_userdata();
+			if(empty($session['userid']))
+				header("LOCATION:login");
+			else 
+			{
+				$data['session'] = $session;
+				//$data['collection'] = $this->collection_model->get_my_col();
+				$this->load->view('personal-collect-detail',$data);
+			}		
+		}
+
+		function my_publish()
+		{
+			$session = $this->session->all_userdata();
+			if(empty($session['userid']))
+				header("LOCATION:login");
+			else 
+			{
+				$data['session'] = $session;
+				//$data['collection'] = $this->collection_model->get_my_col();
+				$this->load->view('personal-publish',$data);
+			}		
+		}
+
+		function my_publish_detail()
+		{
+			$session = $this->session->all_userdata();
+			if(empty($session['userid']))
+				header("LOCATION:login");
+			else 
+			{
+				$data['session'] = $session;
+				//$data['collection'] = $this->collection_model->get_my_col();
+				$this->load->view('personal-publish-detail',$data);
+			}		
+		}
+
 
 		function deliver_new()
 		{
 			$session = $this->session->all_userdata();
 			if(empty($session['userid']))
-				header("LOCATON:login");
+				header("LOCATION:login");
 			else 
 			{
 				$data['session'] = $session;
-				$this->load->view('deliver_new',$data);
+				$this->load->view('publish',$data);
 			}		
 		}
 
 		function show_detail($proid=1)
 		{
 			$proid = (int)$proid;
-			$data = $this->products_model->getOne($proid);
-			if($data)
-				$this->load->view('detail',$data);
-			else 
-				$this->load->view("404NOFOUND");
+			//$data = $this->products_model->getOne($proid);
+			//if($data)
+				$this->load->view('product');
+			//else 
+				//$this->load->view("404NOFOUND");
 		}
+
 	}

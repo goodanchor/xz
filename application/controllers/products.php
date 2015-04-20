@@ -13,7 +13,6 @@
 		function deliver_new_pro()
 		{
 			$post = $this->input->post();
-
 			if($post['proname']=='' OR $post['pid']=='' OR $post['wants']=='')
 			{
 				echo 0;
@@ -41,7 +40,8 @@
 					return 0;
 
 
-				if ($this->products_model->upload($post,$targetFile)){
+				if ($this->products_model->add($post,$targetFile))
+				{
 					echo '1';
 				}
 				else  {
@@ -57,14 +57,14 @@
 
 		function update()
 		{
-			$post = $this->input->post();
+			$post = array('proid'=>16,'proname'=>'dhg','pid'=>2,'wants'=>2);//$this->input->post();
 
-			if($post['proid'] OR $post['proname']=='' OR $post['pid']=='' OR $post['wants']=='')
+			if($post['proid']=='' OR $post['proname']=='' OR $post['pid']=='' OR $post['wants']=='')
 			{
 				$res['status'] = 0;
 				$res['msg'] = 'please fill all';
 			}
-			else if($this->products_model->update($post))
+			else if($this->products_model->update_pro($post))
 			{
 				$res['status'] = 1;
 				$res['msg'] = 'success';
@@ -97,7 +97,7 @@
 		function getAll()
 		{
 			$post = $this->input->post();
-			if($rows = $this->products_model->getAll($post['pid'],$post['limit']))
+			if($rows = $this->products_model->getall((int)$post['pid'],(int)$post['limit']))
 			{
 				$res['status'] = 1;
 				$res['msg'] = 'success';
@@ -112,9 +112,27 @@
 			echo json_encode($res);
 		}
 
-		function get_recommend()
+		function getOne()
+		{
+			$proid= array('proid'=> 16);
+			if($row= $this->products_model->getOne($proid))
+			{
+				$res['status'] = 1;
+				$res['msg'] = 'success';
+				$res['row'] = $row;
+			}
+			else
+			{
+				$res['status'] = 0;
+				$res['msg'] = 'failed';
+				$res['rows'] = '';
+			}
+			echo json_encode($res);
+		}
+		
+	/*	function get_recommend()
 		{
 			$this->products_model->get
-		}
+		}*/
 		
 	}

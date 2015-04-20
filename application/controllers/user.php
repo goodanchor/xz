@@ -36,21 +36,30 @@
 		//register
 		function do_register()
 		{
-			$post = $this->input->post();
+			$post =$this->input->post();
 			if($post['name']=='' OR $post['password']=='' OR $post['email']=='')
 			{
-				$res['mes']='请输入完整的登陆信息';
+				$res['mes']='请输入完整的注册信息';
 				$res['status']=0;
 			}
-			else if($res['res'] = $this->user_model->register($post))
+			else 
 			{
-				$res['mes']='注册成功';
-				$res['status']=1;
-			}
-			else
-			{
-				$res['mes']='注册失败';
-				$res['status']=0;
+				$result = $this->user_model->register($post);
+				if($result==0) 
+				{
+					$res['mes']='has been exists';
+					$res['status']=0;
+				}
+				else if($result==1)
+				{
+					$res['mes']='注册success';
+					$res['status']=1;
+				}
+				else if($result==1)
+				{
+					$res['mes']='注册failed';
+					$res['status']=0;
+				}
 			}
 			echo json_encode($res);
 		}
@@ -125,6 +134,6 @@
 		{
 			$data = array('userid'=>'','name'=>'');
 			$this->session->unset_userdata($data);
-			header('LOCATION:index');
+			echo 1;
 		}
 	}

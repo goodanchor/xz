@@ -28,7 +28,7 @@
 		function del_col()
 		{
 			$post = $this->input->post();
-			if($this->collection_model->del_collect($post))
+			if($this->collection_model->delete($post))
 			{
 				$res['status'] = 1;
 				$res['msg'] = 'success';
@@ -40,7 +40,7 @@
 			}
 			echo json_encode($res);
 		}
-
+	
 		function is_col()
 		{
 			$post = $this->input->post();

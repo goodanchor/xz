@@ -1,0 +1,51 @@
+/*@ reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, input, textarea, p, blockquote, th, td,a,img {
+    font-family: "\5FAE\8F6F\96C5\9ED1","\5b8b\4f53";
+    word-break: break-all;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+ul, li, a {
+    list-style: none;
+    text-decoration: none;
+    color: #333333;
+}
+table{
+    border:0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.f12{
+    font-size: 12px;
+}
+.f14{
+    font-size: 14px;
+}
+.f16{
+    font-size: 16px;
+}
+.inline-block{
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix {
+    *zoom: 1;
+}
+#wrapper{
+    width: 1020px;
+    margin: 0 auto;
+}
+#content{
+    padding-top: 40px;
+}
